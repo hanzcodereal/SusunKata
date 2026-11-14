@@ -35,6 +35,12 @@ jobs:
 
       - name: Pasang Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          # Paket 'tools' sudah tidak ada di repositori SDK, jadi dikosongkan
+          packages: ''
+
+      - name: Pasang paket SDK yang dibutuhkan
+        run: sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
       - name: Pasang Gradle
         uses: gradle/actions/setup-gradle@v4
